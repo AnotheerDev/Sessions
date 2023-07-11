@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\SessionRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -25,6 +27,21 @@ class Session
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
     private ?\DateTimeInterface $endSession = null;
+
+    #[ORM\ManyToMany(targetEntity: User::class, inversedBy: 'sessions')]
+    private Collection $sessionUser;
+
+    #[ORM\ManyToOne(cascade: ['persist', 'remove'])]
+    private ?Formation $sessionFormation = null;
+
+    #[ORM\OneToMany(mappedBy: 'session', targetEntity: Programme::class)]
+    private Collection $sessionProgramme;
+
+    public function __construct()
+    {
+        $this->sessionUser = new ArrayCollection();
+        $this->sessionProgramme = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -75,6 +92,72 @@ class Session
     public function setEndSession(\DateTimeInterface $endSession): static
     {
         $this->endSession = $endSession;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, User>
+     */
+    public function getSessionUser(): Collection
+    {
+        return $this->sessionUser;
+    }
+
+    public function addSessionUser(User $sessionUser): static
+    {
+        if (!$this->sessionUser->contains($sessionUser)) {
+            $this->sessionUser->add($sessionUser);
+        }
+
+        return $this;
+    }
+
+    public function removeSessionUser(User $sessionUser): static
+    {
+        $this->sessionUser->removeElement($sessionUser);
+
+        return $this;
+    }
+
+    public function getSessionFormation(): ?Formation
+    {
+        return $this->sessionFormation;
+    }
+
+    public function setSessionFormation(?Formation $sessionFormation): static
+    {
+        $this->sessionFormation = $sessionFormation;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Programme>
+     */
+    public function getSessionProgramme(): Collection
+    {
+        return $this->sessionProgramme;
+    }
+
+    public function addSessionProgramme(Programme $sessionProgramme): static
+    {
+        if (!$this->sessionProgramme->contains($sessionProgramme)) {
+            $this->sessionProgramme->add($sessionProgramme);
+            $sessionProgramme->setSession($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSessionProgramme(Programme $sessionProgramme): static
+    {
+        if ($this->sessionProgramme->removeElement($sessionProgramme)) {
+            // set the owning side to null (unless already changed)
+            if ($sessionProgramme->getSession() === $this) {
+                $sessionProgramme->setSession(null);
+            }
+        }
 
         return $this;
     }
