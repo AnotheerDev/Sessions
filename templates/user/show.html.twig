@@ -4,6 +4,14 @@
 
 {% block body %}
 
-<p>show profile</p>
+<h1> {{user}} </h1>
+
+<p>
+    Sexe : {{user.sex}} <br>
+    Email : {{user.email}} <br>
+    Numéro : {{user.phoneNumber}} <br>
+    Ville : {{user.city}} <br>
+    Date de naissance : {{user.birthday | date('d-m-Y')}} <br>
+</p>
 
 {% endblock %}
