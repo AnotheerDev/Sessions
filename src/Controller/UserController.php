@@ -15,4 +15,10 @@ class UserController extends AbstractController
             'controller_name' => 'UserController',
         ]);
     }
+
+    #[Route('/user/show', name: 'app_showProfile')]
+    public function showProfile(): Response
+    {
+        return $this->render('user/show.html.twig', []);
+    }
 }
