@@ -7,13 +7,15 @@
         {% block stylesheets %}
         {% endblock %}
     </head>
-    
-    
     <body>
+        <nav>
+            <ul>
+                <li><a href="{{ path('app_category') }}">Dashboard</a></li>
+                <li><a href="{{ path('app_showProfile') }}">Liste des apprenants</a></li>
+            </ul>
+        </nav>
         {% block body %}{% endblock %}
     </body>
-    
-    
     {% block javascripts %}
     {% endblock %}
 </html>
