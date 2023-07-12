@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\User;
+use App\Entity\Session;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\HttpFoundation\Response;
@@ -23,6 +24,8 @@ class UserController extends AbstractController
     #[Route('/user/listUser', name: 'app_showListUser')]
     public function showListUser(ManagerRegistry $doctrine): Response
     {
+        // $sessionRepository = $doctrine->getRepository(Session::class)->findByUserInSession();
+        // dd($sessionRepository);
         $users = $doctrine->getRepository(User::class)->findAll();
         return $this->render('user/listUser.html.twig', [
             'users' => $users
