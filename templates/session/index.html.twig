@@ -4,4 +4,12 @@
 
 {% block body %}
 
+<p>Liste de toutes les sessions programmées</p>
+
+{% for session in sessions %} 
+    <a href="{{ path('app_showSession', {'id': session.id}) }}">{{ session }}</a>
+    {{ session.nbPlace }}
+    {{ session.startSession | date('d-m-Y')}}
+    {{ session.endSession | date('d-m-Y')}}
+{% endfor %}
 {% endblock %}
