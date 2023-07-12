@@ -14,4 +14,16 @@
     Date de naissance : {{user.birthday | date('d-m-Y')}} <br>
 </p>
 
+<p> {% for session in user.sessions %}
+        Vous êtes inscrits pour la formation : {{ session}} <br>
+        La session dure du : {{ session.startSession | date('d-m-Y')}} au {{ session.endSession | date('d-m-Y')}} <br>
+        Les modules auxquels vous participerez sont : <br>
+
+        {% for prog in session.sessionProgramme %}
+            {{prog.module}} ( {{prog.duration}} jour(s) ) <br>
+        {% endfor %} <br>
+
+    {% endfor %}
+</p>
+
 {% endblock %}
