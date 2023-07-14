@@ -46,12 +46,12 @@ class RegistrationFormType extends AbstractType
                         'message' => 'Please enter a password.',
                     ]),
                     new Length([
-                        'min' => 4,
+                        'min' => 8,
                         'minMessage' => 'Your password should be at least {{ limit }} characters long.',
                         // You can set a max length as well if needed
                     ]),
                     new Regex([
-                        'pattern' => '/^(?=.*[A-Z])(?=.*\d).+$/',
+                        'pattern' => '/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/',
                         'message' => 'Your password should contain at least one uppercase letter and one digit.',
                     ]),
                 ],
