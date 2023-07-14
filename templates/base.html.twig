@@ -8,15 +8,35 @@
         {% endblock %}
     </head>
     <body>
+
+
+
+
+
+        {# NAV BAR  #}
         <nav>
             <ul>
+                {# {% if app.user %} #}
                 <li><a href="{{ path('app_category') }}">Dashboard</a></li>
                 <li><a href="{{ path('app_showListUser') }}">Liste des apprenants</a></li>
                 <li><a href="{{ path('app_session') }}">Liste des sessions </a></li>
+                {% if app.user %}
+                    <li><a href="{{ path('app_logout') }}">Se déconnecter</a></li>
+                {% else %}
+                    <li><a href="{{ path('app_login') }}">Se connecter</a></li>
+                    <li><a href="{{ path('app_register') }}">S'enregistrer</a></li>
+                {% endif %}
+    
+            {# {% if is_granted('ROLE_ADMIN') %}
+                <a href="">Panneau d'administration</a>
+            {% endif %} #}
             </ul>
         </nav>
+
         {% block body %}{% endblock %}
+
     </body>
+
     {% block javascripts %}
     {% endblock %}
 </html>
