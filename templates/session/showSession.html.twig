@@ -4,5 +4,21 @@
 
 {% block body %}
 
+<h1> {{session}} </h1>
+
+<h2> modules abordés dans la session :</h2>
+{% for prog in session.sessionProgramme %}
+    {{prog.module.name}}
+    {# {{prog.programme.duration}} #}
+{% endfor %}
+
+<h2> inscrits dans la session :</h2>
+{% for user in users %}
+    {% if user.sessions is not empty %}
+        {{ user }}
+        {% endif %}
+        {% else %}
+            <p>Aucune inscription enregistrée dans une session </p>
+    {% endfor %}
 
 {% endblock %}
