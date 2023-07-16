@@ -65,44 +65,30 @@ class SessionRepository extends ServiceEntityRepository
     //        ;
     //    }
 
-    // public function findByUserInSession(User $user = null): ?Session
-    // {
-    //     // dd('test');
-    //     return $this->createQueryBuilder('s')
-    //         ->from('user')
-    //         ->where('s.sessionUser = :sessionUser')
-    //         ->andWhere('s.user = :user')
-    //         ->setParameter('user', $user)
-    //         ->getQuery()
-    //         ->getResult();
-    // }
-
-    // /** Afficher les stagiaires non inscrits */
-    // public function findNonInscrits($session_id)
-    // {
-    //     $em = $this->getEntityManager();
-    //     $sub = $em->createQueryBuilder();
-
-    //     $qb = $sub;
-    //     // sélectionner tous les stagiaires d'une session dont l'id est passé en paramètre
-    //     $qb->select('s')
-    //         ->from('App\Entity\Stagiaire', 's')
-    //         ->leftJoin('s.sessions', 'se')
-    //         ->where('se.id = :id');
-
-    //     $sub = $em->createQueryBuilder();
-    //     // sélectionner tous les stagiaires qui ne SONT PAS (NOT IN) dans le résultat précédent
-    //     // on obtient donc les stagiaires non inscrits pour une session définie
-    //     $sub->select('st')
-    //         ->from('App\Entity\Stagiaire', 'st')
-    //         ->where($sub->expr()->notIn('st.id', $qb->getDQL()))
-    //         // requête paramétrée
-    //         ->setParameter('id', $session_id)
-    //         // trier la liste des stagiaires sur le nom de famille
-    //         ->orderBy('st.nom');
-
-    //     // renvoyer le résultat
-    //     $query = $sub->getQuery();
-    //     return $query->getResult();
-    // }
+    public function findNonInscrits($session_id){
+        $em=$this->getEntityManager();
+        $sub=$em->createQueryBuilder();
+    
+        $qb=$sub;
+        //selectionne tous les "apprenants" d'une session dont l'id est passé en paramètre
+        $qb->select('s')
+            ->from('App\Entity\User','s')
+            ->leftJoin('s.sessions', 'se')
+            ->where('se.id = :id');
+            
+            $sub = $em->createQueryBuilder();
+            // sélectionner tous les "apprenants" qui ne SONT PAS (NOT IN) dans le résultat précédent
+            // on obtient les "apprenants" non inscrits pour une session avec id
+            $sub->select('st')
+                ->from('App\Entity\User', 'st')
+                ->where($sub->expr()->NotIn('st.id', $qb->getDQL()))
+                // requête paramétrée
+                ->setParameter('id', $session_id)
+                // trier la liste des "apprenants" par lastname
+                ->orderBy('st.lastName');
+            
+            //return le resultat 
+            $query = $sub->getQuery();
+            return $query->getResult();
+    }
 }
