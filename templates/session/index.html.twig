@@ -8,8 +8,13 @@
 
 {% for session in sessions %} 
     <a href="{{ path('app_showSession', {'id': session.id}) }}">{{ session }}</a>
+    {# nombre de place total #}
     {{ session.nbPlace }}
+    {# nombre d'inscrit #}
+    {{ session.sessionUser| length }}/{{ session.nbPlace }}
+    {# date du début de la session #}
     {{ session.startSession | date('d-m-Y')}}
+        {# date de fin de la session #}
     {{ session.endSession | date('d-m-Y')}}
 {% endfor %}
 {% endblock %}
