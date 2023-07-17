@@ -23,16 +23,18 @@ class SessionController extends AbstractController
     }
 
     #[Route('/showSession/{id}', name: 'app_showSession')]
-    public function show(ManagerRegistry $doctrine, Formation $formation, Session $session=null, SessionRepository $sr, User $user): Response
+    public function show(ManagerRegistry $doctrine, Session $session=null, SessionRepository $sr): Response
     {
         $session_id=$session->getId();
-        $noninscrits= $sr->findNonInscrits($session_id);
+        $nonInscrits= $sr->findNonInscrits($session_id);
+        $autresModules= $sr->findAutresModules($session_id);
         $users = $doctrine->getRepository(User::class)->findAll();
         
         return $this->render('session/showSession.html.twig', [
             'session' => $session,
-            'nonInscrits' => $noninscrits,
+            'nonInscrits' => $nonInscrits,
             'users' => $users,
+            'autresModules' => $autresModules,
         ]);
     }
 }
