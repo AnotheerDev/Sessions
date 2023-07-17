@@ -21,4 +21,14 @@
             <p>Aucune inscription enregistrée dans une session </p>
     {% endfor %}
 
+<h2> non inscrits dans la session :</h2>
+{% for nonInscrit in nonInscrits %}
+    {{nonInscrit}}
+{% endfor %}
+
+<h2>modules non inscrits dans la session</h2>
+{% for autreModule in autresModules %}
+    {{autreModule}}
+    
+{% endfor %}
 {% endblock %}
