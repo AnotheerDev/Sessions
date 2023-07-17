@@ -26,4 +26,7 @@
     {% endfor %}
 </p>
 
+<h2>Modifier les informations de  {{ user }}</h2>
+<a href="{{ path('edit_user', {'id': user.id}) }}">Modifier</a><br>
+
 {% endblock %}
