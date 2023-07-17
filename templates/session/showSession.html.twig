@@ -13,12 +13,8 @@
 {% endfor %}
 
 <h2> inscrits dans la session :</h2>
-{% for user in users %}
-    {% if user.sessions is not empty %}
+{% for user in session.sessionUser %}
         {{ user }}
-        {% endif %}
-        {% else %}
-            <p>Aucune inscription enregistrée dans une session </p>
     {% endfor %}
 
 <h2> non inscrits dans la session :</h2>
