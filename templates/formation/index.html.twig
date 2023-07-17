@@ -4,4 +4,10 @@
 
 {% block body %}
 
+    <h1>Les formations</h1>
+
+    {% for formation in formations %}
+        {{ formation}}
+    {% endfor %}
+
 {% endblock %}
