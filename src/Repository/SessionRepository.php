@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\User;
 use App\Entity\Session;
+use App\Entity\category;
 use Doctrine\Persistence\ManagerRegistry;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 
@@ -91,4 +92,34 @@ class SessionRepository extends ServiceEntityRepository
             $query = $sub->getQuery();
             return $query->getResult();
     }
+
+
+    public function findAutresModules($session_id)
+    {
+        $em = $this->getEntityManager();
+        $sub = $em->createQueryBuilder();
+    
+        $qb = $sub;
+        //selectionne tous les "modules" d'une session dont l'id est passé en paramètre
+        $qb->select('m')
+            ->from('App\Entity\Module', 'm')
+            ->leftJoin('m.programmeModule', 'mp')
+            ->leftJoin('mp.session', 's')
+            ->where('s.id = :id');
+    
+        $sub = $em->createQueryBuilder();
+        //selectionne tous les "modules" qui ne SONT PAS (NOT IN) dans le résultat précédent
+        // on obtient les "modules" non inscrits pour une session avec id
+        $sub->select('mm')
+            ->from('App\Entity\Module', 'mm')
+            ->where($sub->expr()->notIn('mm.id', $qb->getDQL()))
+            ->setParameter('id', $session_id)
+            ->orderBy('mm.name');
+    
+        $query = $sub->getQuery();
+        return $query->getResult();
+    }
+    
+    
+
 }
