@@ -4,27 +4,60 @@
 
 {% block body %}
 
-<h1> {{session}} </h1>
+<h1>{{ session }} du {{ session.startSession|date('d-m-Y') }} au {{ session.endSession|date('d-m-Y') }}</h1>
 
-<h2> modules abordés dans la session :</h2>
-{% for prog in session.sessionProgramme %}
-    {{prog.module.name}}
-    {# {{prog.programme.duration}} #}
-{% endfor %}
-
-<h2> inscrits dans la session :</h2>
-{% for user in session.sessionUser %}
-        {{ user }}
+<h2>Modules abordés dans la session :</h2>
+<table>
+    <thead>
+    </thead>
+    <tbody>
+    {% for prog in session.sessionProgramme %}
+        <tr>
+        <td>{{ prog.module.name }}</td>
+        </tr>
     {% endfor %}
+    </tbody>
+</table>
 
-<h2> non inscrits dans la session :</h2>
-{% for nonInscrit in nonInscrits %}
-    {{nonInscrit}}
-{% endfor %}
+<h2>Inscrits dans la session :</h2>
+<table>
+    <thead>
+    </thead>
+    <tbody>
+    {% for user in session.sessionUser %}
+        <tr>
+        <td>{{ user }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
 
-<h2>modules non inscrits dans la session</h2>
-{% for autreModule in autresModules %}
-    {{autreModule}}
-    
-{% endfor %}
+<h2>Non inscrits dans la session :</h2>
+<table>
+    <thead>
+
+    </thead>
+    <tbody>
+    {% for nonInscrit in nonInscrits %}
+        <tr>
+        <td>{{ nonInscrit }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+<h2>Modules non inscrits dans la session :</h2>
+<table>
+    <thead>
+
+    </thead>
+    <tbody>
+    {% for autreModule in autresModules %}
+        <tr>
+        <td>{{ autreModule }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
 {% endblock %}

@@ -6,15 +6,29 @@
 
 <p>Liste de toutes les sessions programmées</p>
 
-{% for session in sessions %} 
-    <a href="{{ path('app_showSession', {'id': session.id}) }}">{{ session }}</a>
-    {# nombre de place total #}
-    {{ session.nbPlace }}
-    {# nombre d'inscrit #}
-    {{ session.sessionUser| length }}/{{ session.nbPlace }}
-    {# date du début de la session #}
-    {{ session.startSession | date('d-m-Y')}}
-        {# date de fin de la session #}
-    {{ session.endSession | date('d-m-Y')}}
-{% endfor %}
+<table>
+    <thead>
+    <tr>
+        <th>Session</th>
+        <th>Nombre de places</th>
+        <th>Inscrits</th>
+        <th>Date de début</th>
+        <th>Date de fin</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for session in sessions %}
+        <tr>
+            <td>
+                <a href="{{ path('app_showSession', {'id': session.id}) }}">{{ session }}</a>
+            </td>
+            <td>{{ session.nbPlace }}</td>
+            <td>{{ session.sessionUser|length }}/{{ session.nbPlace }}</td>
+            <td>{{ session.startSession|date('d-m-Y') }}</td>
+            <td>{{ session.endSession|date('d-m-Y') }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
 {% endblock %}
