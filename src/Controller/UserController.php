@@ -4,8 +4,10 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Entity\Session;
+use App\Form\UserFormType;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ManagerRegistry;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -17,6 +19,36 @@ class UserController extends AbstractController
     {
         return $this->render('user/index.html.twig', [
             'controller_name' => 'UserController',
+        ]);
+    }
+
+
+    #[Route('/user/ajoutUser', name: 'ajout_user')]
+    #[Route('/user/{id}/edit', name: 'edit_user')]
+    public function add(ManagerRegistry $doctrine, User $user = null, Request $request): Response
+    {
+
+        if(!$user) {
+            $user = new user();
+        }
+
+        $form = $this->createForm(UserFormType::class, $user);
+        $form->handleRequest($request); 
+
+        if($form->isSubmitted() && $form->isValid()){
+            $user = $form->getData();
+            $entityManager = $doctrine->getManager();
+            //equivalent prepare request pour éviter les failles SQL
+            $entityManager->persist($user);
+            // insert into (execute)
+            $entityManager->flush();
+
+            return $this->redirectToRoute('app_showListUser');
+        }
+        //vue pour affiche le formaulaire d'ajout 
+        return $this->render('user/ajoutUser.html.twig', [
+            'formAddUser' => $form->createView(),
+            'edit' => $user->getId(),
         ]);
     }
 
@@ -40,4 +72,5 @@ class UserController extends AbstractController
             'user' => $user
         ]);
     }
+
 }
