@@ -6,6 +6,9 @@
 
 <h1>{{ session }} du {{ session.startSession|date('d-m-Y') }} au {{ session.endSession|date('d-m-Y') }}</h1>
 
+<h2>Ajouter une session :</h2>
+<a href="{{ path('edit_session', {'id': session.id}) }}">Modifier une session</a><br>
+
 <h2>Modules abordés dans la session :</h2>
 <table>
     <thead>
