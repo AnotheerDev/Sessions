@@ -6,17 +6,20 @@
 
 <h1>{{ session }} du {{ session.startSession|date('d-m-Y') }} au {{ session.endSession|date('d-m-Y') }}</h1>
 
-<h2>Ajouter une session :</h2>
+<h2>Modifier une session :</h2>
 <a href="{{ path('edit_session', {'id': session.id}) }}">Modifier une session</a><br>
 
 <h2>Modules abordés dans la session :</h2>
 <table>
     <thead>
+        <th>Module</th>
+        <th>Retirer</th>
     </thead>
     <tbody>
     {% for prog in session.sessionProgramme %}
         <tr>
         <td>{{ prog.module.name }}</td>
+        <td><a href="{{ path('removeModule', {'idSe': session.id, 'idMo': prog.module.id}) }}">xx</a></td>
         </tr>
     {% endfor %}
     </tbody>
@@ -25,11 +28,14 @@
 <h2>Inscrits dans la session :</h2>
 <table>
     <thead>
+        <th>Stagiaire</th>
+        <th>Retirer</th>
     </thead>
     <tbody>
     {% for user in session.sessionUser %}
         <tr>
         <td>{{ user }}</td>
+        <td><a href="{{ path('removeStagiaire', {'idSe': session.id, 'idSt': user.id}) }}">xx</a></td>
         </tr>
     {% endfor %}
     </tbody>
@@ -38,12 +44,14 @@
 <h2>Non inscrits dans la session :</h2>
 <table>
     <thead>
-
+        <th>Stagiaire</th>
+        <th>Ajouter</th>
     </thead>
     <tbody>
     {% for nonInscrit in nonInscrits %}
         <tr>
         <td>{{ nonInscrit }}</td>
+        <td><button>v</button></td>
         </tr>
     {% endfor %}
     </tbody>
@@ -52,12 +60,14 @@
 <h2>Modules non inscrits dans la session :</h2>
 <table>
     <thead>
-
+        <th>Module</th>
+        <th>Ajouter</th>
     </thead>
     <tbody>
     {% for autreModule in autresModules %}
         <tr>
         <td>{{ autreModule }}</td>
+        <td><button>v</button></td>
         </tr>
     {% endfor %}
     </tbody>
