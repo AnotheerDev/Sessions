@@ -19,7 +19,7 @@
     {% for prog in session.sessionProgramme %}
         <tr>
         <td>{{ prog.module.name }}</td>
-        <td><a href="{{ path('removeModule', {'idSe': session.id, 'idMo': prog.module.id}) }}">xx</a></td>
+        <td><a href="{{ path('removeModule', {'idSe': session.id, 'idMo': prog.id}) }}">xx</a></td>
         </tr>
     {% endfor %}
     </tbody>
@@ -51,7 +51,7 @@
     {% for nonInscrit in nonInscrits %}
         <tr>
         <td>{{ nonInscrit }}</td>
-        <td><button>v</button></td>
+        <td><a href="{{ path('addStagiaire', {'idSe': session.id, 'idSt': nonInscrit.id}) }}">vv</a></td>
         </tr>
     {% endfor %}
     </tbody>
@@ -67,7 +67,7 @@
     {% for autreModule in autresModules %}
         <tr>
         <td>{{ autreModule }}</td>
-        <td><button>v</button></td>
+        <td><a href="{{ path('addModule', {'idSe': session.id, 'idMo': autreModule.id}) }}">vv</a></td>
         </tr>
     {% endfor %}
     </tbody>
