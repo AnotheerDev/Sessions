@@ -66,10 +66,13 @@
     </thead>
     <tbody>
     {% for autreModule in autresModules %}
-        <tr>
-        <td>{{ autreModule }}</td>
-        <td><a href="{{ path('addModule', {'idSe': session.id, 'idMo': autreModule.id}) }}">vv</a></td>
-        </tr>
+        <form action="{{ path('addModule', {'idSe': session.id, 'idMo': autreModule.id}) }}" method="post">
+            <tr>
+                <td>{{ autreModule }}</td>
+                <td><input type="number" name="duration"></td>
+                <td><input type="submit" value="ajouter"></td>
+            </tr>
+        </form>
     {% endfor %}
     </tbody>
 </table>
