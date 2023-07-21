@@ -27,8 +27,15 @@
             <td>{{ session.sessionUser|length }}/{{ session.nbPlace }}</td>
             <td>{{ session.startSession|date('d-m-Y') }}</td>
             <td>{{ session.endSession|date('d-m-Y') }}</td>
-            <td>{{ session.formateur }}</td>
-        </tr>
+            <td>
+                {% if session.formateur is defined %}
+                {# {{ dump(session.formateur.id) }} #}
+                    <a href="{{ path('app_formateur', {'id' : session.formateur.id}) }}">{{ session.formateur }}</a>
+                {% else %}
+                    N/A
+                {% endif %}
+            </td>
+                    </tr>
     {% endfor %}
     </tbody>
 </table>
