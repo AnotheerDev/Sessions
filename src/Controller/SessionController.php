@@ -41,10 +41,11 @@ class SessionController extends AbstractController
         // $programmeRepository = $em->getRepository(Session::class); // Assurez-vous d'importer correctement l'entité Programme
         // $programme = $programmeRepository->find($idMo);
         // dd($programme);
-        // Assurez-vous que la méthode removeSessionProgramme attend un objet de type Programme
-        $session->removeSessionProgramme($programme);
+        // pour retire la ligne dans la DB on utilise ici le $em->remove à cause de la relation many to many
+        // c'est pour ça que ça ne fonctionnait pas avec la fonction removeSessionProgramme
+        $em->remove($programme);
     
-        $em->persist($programme);
+        $em->persist($session);
         $em->flush();
     
         return $this->redirectToRoute('app_showSession', ['id' => $session->getId()]);
