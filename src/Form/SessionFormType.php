@@ -29,6 +29,7 @@ class SessionFormType extends AbstractType
                 'widget' => 'single_text',
             ])
             ->add('sessionFormation')
+            ->add('formateur')
             ->add('submit', SubmitType::class, [
             ])
         ;

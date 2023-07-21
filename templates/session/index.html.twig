@@ -14,6 +14,7 @@
         <th>Inscrits</th>
         <th>Date de début</th>
         <th>Date de fin</th>
+        <th>Formateur</th>
     </tr>
     </thead>
     <tbody>
@@ -26,6 +27,7 @@
             <td>{{ session.sessionUser|length }}/{{ session.nbPlace }}</td>
             <td>{{ session.startSession|date('d-m-Y') }}</td>
             <td>{{ session.endSession|date('d-m-Y') }}</td>
+            <td>{{ session.formateur }}</td>
         </tr>
     {% endfor %}
     </tbody>
