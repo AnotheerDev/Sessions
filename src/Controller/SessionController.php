@@ -56,11 +56,15 @@ class SessionController extends AbstractController
     #[Route("/session/addModule/{idSe}/{idMo}", name: 'addModule')]
     //ParamConverter sert un peu comme un aliase pour les routes parce que si il y a plusieurs id le routing se perdera
     #[ParamConverter("session", options:["mapping"=>["idSe"=>"id"]])]
-    #[ParamConverter("programme", options:["mapping"=>["idMo"=>"id"]])]
+    #[ParamConverter("module", options:["mapping"=>["idMo"=>"id"]])]
     
-    public function addModule(ManagerRegistry $doctrine, Session $session, Programme $programme): Response
+    public function addModule(ManagerRegistry $doctrine, Session $session, Module $module): Response
     {
         $em = $doctrine->getManager();
+        $programme = new Programme();
+        $programme->setSession($session);
+        $programme->setModule($module);
+        $programme->setDuration($_POST["duration"]);
         // $programmeRepository = $em->getRepository(Session::class); // Assurez-vous d'importer correctement l'entité Programme
         // $programme = $programmeRepository->find($idMo);
         
@@ -69,7 +73,7 @@ class SessionController extends AbstractController
         // dd($session);
 
     
-        $em->persist($session);
+        $em->persist($programme);
         $em->flush();
     
         return $this->redirectToRoute('app_showSession', ['id' => $session->getId()]);
