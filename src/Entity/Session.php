@@ -37,6 +37,9 @@ class Session
     #[ORM\OneToMany(mappedBy: 'session', targetEntity: Programme::class)]
     private Collection $sessionProgramme;
 
+    #[ORM\ManyToOne(inversedBy: 'sessions')]
+    private ?Formateur $formateur = null;
+
     public function __construct()
     {
         $this->sessionUser = new ArrayCollection();
@@ -165,5 +168,17 @@ class Session
     public function __toString()
     {
         return $this->sessionName;
+    }
+
+    public function getFormateur(): ?Formateur
+    {
+        return $this->formateur;
+    }
+
+    public function setFormateur(?Formateur $formateur): static
+    {
+        $this->formateur = $formateur;
+
+        return $this;
     }
 }
