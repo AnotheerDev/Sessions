@@ -165,20 +165,21 @@ class Session
         return $this;
     }
 
-    public function __toString()
-    {
-        return $this->sessionName;
-    }
-
+    
     public function getFormateur(): ?Formateur
     {
         return $this->formateur;
     }
-
+    
     public function setFormateur(?Formateur $formateur): static
     {
         $this->formateur = $formateur;
-
+        
         return $this;
+    }
+    
+    public function __toString()
+    {
+        return $this->sessionName;
     }
 }
