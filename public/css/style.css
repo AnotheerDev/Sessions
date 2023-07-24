@@ -8,165 +8,249 @@
 } */
 
 /* : selectionne tous les elements de la page */
-*{
-    text-decoration: none;
-}
+
+    *{
+        text-decoration: none;
+    }
+
 
 /* view : base.html.twig */
-#body{
-    padding: 0%;
-    margin: 0%;
-    padding-right: 5em;
-    padding-left: 5em;
-    min-height: 100vh;
-    min-width: 100vh;
-    background-image: linear-gradient(to left bottom, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1);
-}
 
-#nav{
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    border-bottom: rgb(255, 255, 255) solid 2px;
-}
+    #body-base{
+        padding: 0%;
+        margin: 0%;
+        padding-right: 5em;
+        padding-left: 5em;
+        min-height: 100vh;
+        min-width: 100vh;
+        background-image: linear-gradient(to left bottom, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1);
+    }
 
-#navLeft{
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    gap : 20px;
-}
 
-#navRight{
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-    gap : 20px;
-}
+/* Css navBar */
 
-ul{
-    margin:0;
-    padding:18px;
-    display:flex;
-}
+    #nav{
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        border-bottom: rgb(255, 255, 255) solid 2px;
+    }
 
-ul lo{
-    margin:0 20px;
-    transition:0.5s;
-}
+    #navLeft{
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        gap : 20px;
+    }
 
-ul lo a{
-    display: block;
-    position:relative;
-    text-decoration:none;
-    padding:5px;
-    font-size:18px;
-    font-family: sans-serif;
-    color:#fff;
-    text-transform:uppercase;
-    transition:0.5s;
-}
+    #navRight{
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        gap : 20px;
+    }
 
-ul:hover lo a{
-    transform:scale(1.5);
-    opacity:0.2;
-    filter:blur(5px);
-}
+    ul{
+        margin:0;
+        padding:18px;
+        display:flex;
+    }
 
-ul lo a:hover{
-    transform:scale(1.2);
-    opacity:1;
-    filter:blur(0);
-    text-decoration:none;
-    color:#fff;
-}
+    ul lo{
+        margin:0 20px;
+        transition:0.5s;
+    }
 
-ul lo a:before{
-    content:'';
-    position:absolute;
-    top:0;
-    left:0;
-    width:100%;
-    height:100%;
-    transition:0.5s;
-    transform-origin:right;
-    transform:scaleX(0);
-    z-index:-1;
-}
+    ul lo a{ 
+        display: block;
+        position:relative;
+        text-decoration:none;
+        padding:5px;
+        font-size:18px;
+        font-family: sans-serif;
+        color:#fff;
+        text-transform:uppercase;
+        transition:0.5s;
+    }
 
-ul lo a:hover:before{
-    transition:transform 0.5s;
-    transform-origin:left;
-    transform:scaleX(1);
-}
+    ul:hover lo a{
+        transform:scale(1.5);
+        opacity:0.2;
+        filter:blur(5px);
+    }
 
-/* all my btn */
-.btn-green {
-    background-color: #4CAF50;
-    border: none;
-    color: white;
-    padding: 5px 10px;
-    text-align: center;
+    ul lo a:hover{
+        transform:scale(1.2);
+        opacity:1;
+        filter:blur(0);
+        text-decoration:none;
+        color:#fff;
+    }
 
-    display: inline-block;
-    font-size: 16px;
-    border-radius: 15px;
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    ul lo a:before{
+        content:'';
+        position:absolute;
+        top:0;
+        left:0;
+        width:100%;
+        height:100%;
+        transition:0.5s;
+        transform-origin:right;
+        transform:scaleX(0);
+        z-index:-1;
+    }
 
-}
+    ul lo a:hover:before{
+        transition:transform 0.5s;
+        transform-origin:left;
+        transform:scaleX(1);
+    }
 
-.btn-red {
-    background-color: #FF0000;
-    border: none;
-    color: white;
-    padding: 5px 10px;
-    text-align: center;
+/* css pour btn */
 
-    display: inline-block;
-    font-size: 16px;
-    border-radius: 15px;
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    .btn-green {
+        background-color: #4CAF50;
+        border: none;
+        color: white;
+        padding: 5px 10px;
+        text-align: center;
+        display: inline-block;
+        font-size: 16px;
+        border-radius: 15px;
+        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    }
 
-}
+    .btn-red {
+        background-color: #FF0000;
+        border: none;
+        color: white;
+        padding: 5px 10px;
+        text-align: center;
+        display: inline-block;
+        font-size: 16px;
+        border-radius: 15px;
+        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    }
 
-.btn-orange {
-    background-color: #ffb300;
-    border: none;
-    color: white;
-    padding: 5px 10px;
-    text-align: center;
+    .btn-orange {
+        background-color: #ffb300;
+        border: none;
+        color: white;
+        padding: 5px 10px;
+        text-align: center;
+        display: inline-block;
+        font-size: 16px;
+        border-radius: 15px;
+        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    }
 
-    display: inline-block;
-    font-size: 16px;
-    border-radius: 15px;
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
-}
+    .btn-blue {
+        background-color: #3939bc;
+        border: none;
+        color: white;
+        padding: 5px 10px;
+        text-align: center;
+        margin-top: 10px;
+        display: inline-block;
+        font-size: 16px;
+        border-radius: 15px;
+        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    }
 
 
 
 /* Style du tableau en général */
-table {
-    border-collapse: collapse;
-    margin-bottom: 20px;
-}
 
-  /* Style de l'en-tête du tableau */
-thead th {
-    padding: 8px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-}
+    table {
+        border-collapse: collapse;
+        margin-bottom: 20px;
+    }
 
-  /* Style des cellules du corps du tableau */
-tbody td {
-    padding: 8px;
-    border-bottom: 1px solid #ddd;
-}
+    /* Style de l'en-tête du tableau */
+    thead th {
+        padding: 8px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
 
-  /* Style des liens dans le tableau */
-table a {
-    color: #007bff;
+    /* Style des cellules du corps du tableau */
+    tbody td {
+        padding: 8px;
+        border-bottom: 1px solid #ddd;
+    }
 
-}
+    /* Style des liens dans le tableau */
+    table a {
+        color: #007bff;
+    }
+
+
+
+/* css input */
+
+input {  
+    /* --input-focus: 245 100% 42%;couleur du focus */
+    font-size: inherit;
+    transition: 180ms box-shadow ease-in-out;
+    font-family: inherit;
+    font-size: inherit;
+    color: black;
+    padding: 0.25em 0.5em;
+    background-color: #fff;
+    border: 2px solid silver;
+    width: clamp(150px, 50%, 300px);
+    height: 1.75rem        
+}   
+
+
+
+/* tout ce qui concerne les form */
+/* Style pour le conteneur du formulaire */
+    .centre {
+        max-width: 400px;
+        margin: 200px auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+/* Style pour les messages d'erreur */
+    [role="alert"] {
+        color: red;
+        margin-bottom: 10px;
+    }
+
+/* Style pour les éléments du formulaire */
+    .form-row {
+        margin-bottom: 10px;
+    }
+
+    .form-label {
+        display: block;
+        font-weight: bold;
+    }
+
+    .form-input,
+    .form-checkbox {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    .form-checkbox {
+        display: inline-block;
+        width: auto;
+        margin-right: 10px;
+    }
+
+    input[type="password"]{
+        display: flex;
+        align-items: flex-end;
+    }
+
+
+
+/* la suite du css */
 
 
