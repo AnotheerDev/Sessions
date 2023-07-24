@@ -17,17 +17,17 @@
         {# NAV BAR  #}
         <nav id="nav">
             <ul id="navLeft">
-                <lo><a href="{{ path('app_showListUser') }}">Liste des apprenants</a></lo>
-                <lo><a href="{{ path('app_session') }}">Liste des sessions </a></lo>
-                <lo><a href="{{ path('app_formation') }}">Liste des formations </a></lo>
-            </ul>
-            <ul id="navRight">
-                {% if app.user %}
-                    <lo><a href="{{ path('app_logout') }}">Se déconnecter</a></lo>
-                {% else %}
-                    <lo><a href="{{ path('app_login') }}">Se connecter</a></lo>
-                    <lo><a href="{{ path('app_register') }}">S'enregistrer</a></lo>
-                {% endif %}
+                    {% if app.user %}
+                        <lo><a href="{{ path('app_showListUser') }}">Liste des apprenants</a></lo>
+                        <lo><a href="{{ path('app_session') }}">Liste des sessions </a></lo>
+                        <lo><a href="{{ path('app_formation') }}">Liste des formations </a></lo>
+                    </ul>
+                <ul id="navRight">
+                        <lo><a href="{{ path('app_logout') }}">Se déconnecter</a></lo>
+                    {% else %}
+                        <lo><a href="{{ path('app_login') }}">Se connecter</a></lo>
+                        <lo><a href="{{ path('app_register') }}">S'enregistrer</a></lo>
+            {% endif %}
     
             {# {% if is_granted('ROLE_ADMIN') %}
                 <a href="">Panneau d'administration</a>
