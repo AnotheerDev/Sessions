@@ -20,7 +20,7 @@
     {% for prog in session.sessionProgramme %}
         <tr>
         <td>{{ prog.module.name }}</td>
-        <td><a href="{{ path('removeModule', {'idSe': session.id, 'idMo': prog.id}) }}" class="btn-red">xx</a></td>
+        <td><a href="{{ path('removeModule', {'idSe': session.id, 'idMo': prog.id}) }}"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#d32121" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"> <circle cx="12" cy="12" r="10"/><path d="M16 12l-4 4-4-4M12 8v7"/></svg></a></td>
         </tr>
     {% endfor %}
     </tbody>
@@ -36,7 +36,7 @@
     {% for user in session.sessionUser %}
         <tr>
         <td>{{ user }}</td>
-        <td><a href="{{ path('removeStagiaire', {'idSe': session.id, 'idSt': user.id}) }}" class="btn-red">xx</a></td>
+        <td><a href="{{ path('removeStagiaire', {'idSe': session.id, 'idSt': user.id}) }}"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#d32121" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"> <circle cx="12" cy="12" r="10"/><path d="M16 12l-4 4-4-4M12 8v7"/></svg></a></td>
         </tr>
     {% endfor %}
     </tbody>
@@ -52,7 +52,7 @@
     {% for nonInscrit in nonInscrits %}
         <tr>
         <td>{{ nonInscrit }}</td>
-        <td><a href="{{ path('addStagiaire', {'idSe': session.id, 'idSt': nonInscrit.id}) }}" class="btn-green">vv</a></td>
+        <td><a href="{{ path('addStagiaire', {'idSe': session.id, 'idSt': nonInscrit.id}) }}"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#21c07a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"> <circle cx="12" cy="12" r="10"/><path d="M16 12l-4 4-4-4M12 8v7"/></svg></a></td>
         </tr>
     {% endfor %}
     </tbody>
