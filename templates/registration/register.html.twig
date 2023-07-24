@@ -2,23 +2,37 @@
 
 {% block title %}Register{% endblock %}
 
+
 {% block body %}
     {% for flash_error in app.flashes('verify_email_error') %}
-        <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
+        <div role="alert">{{ flash_error }}</div>
     {% endfor %}
 
-    <h1>Register</h1>
+    <section class="centre">
+        <h1>S'enregistrer</h1>
+        <div>
+            {{ form_errors(registrationForm) }}
 
-    {{ form_errors(registrationForm) }}
+            {{ form_start(registrationForm) }}
+                <div class="form-row">
+                    {{ form_label(registrationForm.email) }}
+                    {{ form_widget(registrationForm.email, {'attr': {'class': 'form-input'}}) }}
+                </div>
+                <div class="form-row">
+                    {{ form_label(registrationForm.nickname) }}
+                    {{ form_widget(registrationForm.nickname, {'attr': {'class': 'form-input'}}) }}
+                </div>
+                <div class="form-row">
+                    {{ form_label(registrationForm.plainPassword, 'Password') }}
+                    {{ form_widget(registrationForm.plainPassword, {'attr': {'class': 'form-input'}}) }}
+                </div>
+                <div class="form-row">
+                    {{ form_label(registrationForm.agreeTerms) }}
+                    {{ form_widget(registrationForm.agreeTerms, {'attr': {'class': 'form-checkbox'}}) }}
+                </div>
 
-    {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.email) }}
-        {{ form_row(registrationForm.nickname) }}
-        {{ form_row(registrationForm.plainPassword, {
-            label: 'Password'
-        }) }}
-        {{ form_row(registrationForm.agreeTerms) }}
-
-        <button type="submit" class="btn">Register</button>
-    {{ form_end(registrationForm) }}
+                <button type="submit" class="btn-blue">S'enregistrer</button>
+            {{ form_end(registrationForm) }}
+        </div>
+    </section>
 {% endblock %}
