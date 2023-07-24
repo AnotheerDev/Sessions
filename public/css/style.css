@@ -27,6 +27,7 @@
     display: flex;
     align-items: baseline;
     justify-content: space-between;
+    border-bottom: rgb(255, 255, 255) solid 2px;
 }
 
 #navLeft{
@@ -98,41 +99,74 @@ ul lo a:hover:before{
     transform-origin:left;
     transform:scaleX(1);
 }
+
 /* all my btn */
 .btn-green {
     background-color: #4CAF50;
     border: none;
     color: white;
-    padding: 15px 32px;
+    padding: 5px 10px;
     text-align: center;
-    text-decoration: none;
+
     display: inline-block;
     font-size: 16px;
     border-radius: 15px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+
 }
 
 .btn-red {
     background-color: #FF0000;
     border: none;
     color: white;
-    padding: 15px 32px;
+    padding: 5px 10px;
     text-align: center;
-    text-decoration: none;
+
     display: inline-block;
     font-size: 16px;
     border-radius: 15px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+
 }
 
 .btn-orange {
     background-color: #ffb300;
     border: none;
     color: white;
-    padding: 15px 32px;
+    padding: 5px 10px;
     text-align: center;
-    text-decoration: none;
+
     display: inline-block;
     font-size: 16px;
     border-radius: 15px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+
+
+/* Style du tableau en général */
+table {
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+  /* Style de l'en-tête du tableau */
+thead th {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+  /* Style des cellules du corps du tableau */
+tbody td {
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+}
+
+  /* Style des liens dans le tableau */
+table a {
+    color: #007bff;
+
 }
 
 
