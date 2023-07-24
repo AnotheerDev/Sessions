@@ -4,7 +4,7 @@
 
 {% block body %}
 
-<p>Liste de toutes les sessions programmées :</p>
+<h2>Liste de toutes les sessions programmées :</h2>
 
 <table>
     <thead>
@@ -15,7 +15,7 @@
         <th>Date de début</th>
         <th>Date de fin</th>
         <th>Formateur</th>
-        <th>Delete</th>
+        {# <th>Delete</th> #}
     </tr>
     </thead>
     <tbody>
@@ -36,7 +36,7 @@
                     N/A
                 {% endif %}
             </td>
-            <td><a href="{{ path('app_session', {'id': session.id}) }}">xx</a></td>
+            {# <td><a href="{{ path('app_session', {'id': session.id}) }}">xx</a></td> #}
                     </tr>
     {% endfor %}
     </tbody>
