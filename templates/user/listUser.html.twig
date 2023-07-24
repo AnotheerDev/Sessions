@@ -3,25 +3,28 @@
 {% block title %}Hello UserController!{% endblock %}
 
 {% block body %}
-    <h1>Apprenants inscrits dans une session :</h1>
-    {% for user in users %}
-        {% if user.sessions is not empty %}
-            <a href="{{ path('app_showProfile', {'id': user.id}) }}">{{ user }}</a><br>
-        {% endif %}
-    {% else %}
-        <p>Aucune inscription enregistrée dans une session</p>
-    {% endfor %}
 
-    <h1>Apprenants non inscrits dans une session :</h1>
-    {% for user in users %}
-        {% if user.sessions is empty %}
-            <a href="{{ path('app_showProfile', {'id': user.id}) }}">{{ user }}</a><br>
-        {% endif %}
-    {% else %}
-        <p>Tous les apprenants sont inscrits dans une session</p>
-    {% endfor %}
+    <section class="sectionListUser">
+        <h1>Apprenants inscrits dans une session :</h1>
+        {% for user in users %}
+            {% if user.sessions is not empty %}
+                <a href="{{ path('app_showProfile', {'id': user.id}) }}">{{ user }}</a><br>
+            {% endif %}
+        {% else %}
+            <p>Aucune inscription enregistrée dans une session</p>
+        {% endfor %}
 
-    <h2>Ajouter un apprenants</h2>
-    <a href="{{ path('ajout_user') }}">Ajouter</a><br>
-    
+        <h1>Apprenants non inscrits dans une session :</h1>
+        {% for user in users %}
+            {% if user.sessions is empty %}
+                <a href="{{ path('app_showProfile', {'id': user.id}) }}">{{ user }}</a><br>
+            {% endif %}
+        {% else %}
+            <p>Tous les apprenants sont inscrits dans une session</p>
+        {% endfor %}
+
+        <h2>Ajouter un apprenant</h2>
+        <a href="{{ path('ajout_user') }}">Ajouter</a><br>
+    </section>
+
 {% endblock %}
