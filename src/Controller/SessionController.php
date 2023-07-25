@@ -21,7 +21,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 class SessionController extends AbstractController
 {
     #[Route('/session', name: 'app_session')]
-    public function index(ManagerRegistry $doctrine): Response
+    public function index(ManagerRegistry $doctrine, SessionRepository $sr): Response
     {
         $em = $doctrine->getManager();
 
@@ -31,8 +31,14 @@ class SessionController extends AbstractController
     
         // $em->persist($session);
         // $em->flush();
+        $sessionsPresent=$sr->sessionPresent();
+        $sessionsPassees=$sr->sessionPassee();
+        $sessionsFuture=$sr->sessionFuture();
         return $this->render('session/index.html.twig', [
-            'sessions' => $sessions
+            'sessions' => $sessions,
+            'sessionsPresent' => $sessionsPresent,
+            'sessionsPassees' => $sessionsPassees,
+            'sessionsFuture' => $sessionsFuture
         ]);
     }
 
