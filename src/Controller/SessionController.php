@@ -157,14 +157,19 @@ class SessionController extends AbstractController
     #[Route('/showSession/{id}', name: 'app_showSession')]
     public function show(Session $session=null, SessionRepository $sr): Response
     {
-        $session_id=$session->getId();
-        $nonInscrits= $sr->findNonInscrits($session_id);
-        $autresModules= $sr->findAutresModules($session_id);
-        
-        return $this->render('session/showSession.html.twig', [
-            'session' => $session,
-            'nonInscrits' => $nonInscrits,
-            'autresModules' => $autresModules,
-        ]);
+        // avec un if($session) et le else pour rediriger ça evite l'erreur et redirige quand on essaie de modifier l'url
+        if($session) {
+            $session_id=$session->getId();
+            $nonInscrits= $sr->findNonInscrits($session_id);
+            $autresModules= $sr->findAutresModules($session_id);
+            
+            return $this->render('session/showSession.html.twig', [
+                'session' => $session,
+                'nonInscrits' => $nonInscrits,
+                'autresModules' => $autresModules,
+            ]);
+        } else {
+            return $this->redirectToRoute("app_session");
+        }
     }
 }
