@@ -4,78 +4,87 @@
 
 {% block body %}
 
-<h1>{{ session }} du {{ session.startSession|date('d-m-Y') }} au {{ session.endSession|date('d-m-Y') }}</h1>
+    <h1>{{ session }} du {{ session.startSession|date('d-m-Y') }} au {{ session.endSession|date('d-m-Y') }}</h1>
 
-<h2>Modifier une session :</h2>
-<a href="{{ path('edit_session', {'id': session.id}) }}" class="btn-orange">Modifier une session</a><br>
+    <h2>Modifier une session :</h2>
+    <a href="{{ path('edit_session', {'id': session.id}) }}" class="btn-orange">Modifier une session</a><br>
 
-<h2>Modules abordés dans la session :</h2>
-<table>
-    <thead>
-        <th>Module</th>
-        {# <th>Nb Jour</th> #}
-        <th>Retirer</th>
-    </thead>
-    <tbody>
-    {% for prog in session.sessionProgramme %}
-        <tr>
-        <td>{{ prog.module.name }}</td>
-        <td><a href="{{ path('removeModule', {'idSe': session.id, 'idMo': prog.id}) }}"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#d32121" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"> <circle cx="12" cy="12" r="10"/><path d="M16 12l-4 4-4-4M12 8v7"/></svg></a></td>
-        </tr>
-    {% endfor %}
-    </tbody>
-</table>
-
-<h2>Inscrits dans la session :</h2>
-<table>
-    <thead>
-        <th>Stagiaire</th>
-        <th>Retirer</th>
-    </thead>
-    <tbody>
-    {% for user in session.sessionUser %}
-        <tr>
-        <td>{{ user }}</td>
-        <td><a href="{{ path('removeStagiaire', {'idSe': session.id, 'idSt': user.id}) }}"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#d32121" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"> <circle cx="12" cy="12" r="10"/><path d="M16 12l-4 4-4-4M12 8v7"/></svg></a></td>
-        </tr>
-    {% endfor %}
-    </tbody>
-</table>
-
-<h2>Non inscrits dans la session :</h2>
-<table>
-    <thead>
-        <th>Stagiaire</th>
-        <th>Ajouter</th>
-    </thead>
-    <tbody>
-    {% for nonInscrit in nonInscrits %}
-        <tr>
-        <td>{{ nonInscrit }}</td>
-        <td><a href="{{ path('addStagiaire', {'idSe': session.id, 'idSt': nonInscrit.id}) }}"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#21c07a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"> <circle cx="12" cy="12" r="10"/><path d="M16 12l-4 4-4-4M12 8v7"/></svg></a></td>
-        </tr>
-    {% endfor %}
-    </tbody>
-</table>
-
-<h2>Modules non inscrits dans la session :</h2>
-<table>
-    <thead>
-        <th>Module</th>
-        <th>Durée</th>
-        <th>Ajouter</th>
-    </thead>
-    <tbody>
-    {% for autreModule in autresModules %}
-        <form action="{{ path('addModule', {'idSe': session.id, 'idMo': autreModule.id}) }}" method="post">
-            <tr>
-                <td>{{ autreModule }}</td>
-                <td><input type="number" name="duration"></td>
-                <td><input type="submit" value="ajouter" class="btn-green"></td>
-            </tr>
-        </form>
-    {% endfor %}
-    </tbody>
-</table>
+<div class="bloc-session1">
+    <div>
+        <h2>Modules abordés dans la session :</h2>
+        <table>
+            <thead>
+                <th>Module</th>
+                {# <th>Nb Jour</th> #}
+                <th>Retirer</th>
+            </thead>
+            <tbody>
+            {% for prog in session.sessionProgramme %}
+                <tr>
+                <td>{{ prog.module.name }}</td>
+                <td><a href="{{ path('removeModule', {'idSe': session.id, 'idMo': prog.id}) }}"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#d32121" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"> <circle cx="12" cy="12" r="10"/><path d="M16 12l-4 4-4-4M12 8v7"/></svg></a></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>    
+    <div>
+        <h2>Inscrits dans la session :</h2>
+        <table>
+            <thead>
+                <th>Stagiaire</th>
+                <th>Retirer</th>
+            </thead>
+            <tbody>
+            {% for user in session.sessionUser %}
+                <tr>
+                <td>{{ user }}</td>
+                <td><a href="{{ path('removeStagiaire', {'idSe': session.id, 'idSt': user.id}) }}"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#d32121" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"> <circle cx="12" cy="12" r="10"/><path d="M16 12l-4 4-4-4M12 8v7"/></svg></a></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="bloc-session2">
+    <div>
+        <h2>Non inscrits dans la session :</h2>
+        <table>
+            <thead>
+                <th>Stagiaire</th>
+                <th>Ajouter</th>
+            </thead>
+            <tbody>
+            {% for nonInscrit in nonInscrits %}
+                <tr>
+                <td>{{ nonInscrit }}</td>
+                <td><a href="{{ path('addStagiaire', {'idSe': session.id, 'idSt': nonInscrit.id}) }}"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#21c07a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"> <circle cx="12" cy="12" r="10"/><path d="M16 12l-4 4-4-4M12 8v7"/></svg></a></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div>
+        <h2>Modules non inscrits dans la session :</h2>
+        <table>
+            <thead>
+                <th>Module</th>
+                <th>Durée</th>
+                <th>Ajouter</th>
+            </thead>
+            <tbody>
+            {% for autreModule in autresModules %}
+                <form action="{{ path('addModule', {'idSe': session.id, 'idMo': autreModule.id}) }}" method="post">
+                    <tr>
+                        <td>{{ autreModule }}</td>
+                        <td><input type="number" name="duration"></td>
+                        <td><input type="submit" value="ajouter" class="btn-green"></td>
+                    </tr>
+                </form>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
 
 {% endblock %}
