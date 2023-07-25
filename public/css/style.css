@@ -253,4 +253,16 @@ input {
 
 /* la suite du css */
 
+    .bloc-session1{
+        display: flex;
+        flex-direction: row;
+        gap: 150px;
+        margin-bottom: 50px;
+        margin-top: 50px;
+    }
 
+    .bloc-session2{
+        display: flex;
+        flex-direction: row;
+        gap: 230px;
+    }
