@@ -4,7 +4,7 @@
 
 {% block body %}
 
-<h2>Liste de toutes les sessions programmées :</h2>
+<h2>Liste de toutes les sessions présentes programmées :</h2>
 
 <table>
     <thead>
@@ -19,19 +19,95 @@
     </tr>
     </thead>
     <tbody>
-    {% for session in sessions %}
+    {% for sessionPresent in sessionsPresent %}
         <tr>
             <td>
-                <a href="{{ path('app_showSession', {'id': session.id}) }}">{{ session }}</a>
+                <a href="{{ path('app_showSession', {'id': sessionPresent.id}) }}">{{ sessionPresent }}</a>
             </td>
-            <td>{{ session.nbPlace }}</td>
-            <td>{{ session.sessionUser|length }}/{{ session.nbPlace }}</td>
-            <td>{{ session.startSession|date('d-m-Y') }}</td>
-            <td>{{ session.endSession|date('d-m-Y') }}</td>
+            <td>{{ sessionPresent.nbPlace }}</td>
+            <td>{{ sessionPresent.sessionUser|length }}/{{ sessionPresent.nbPlace }}</td>
+            <td>{{ sessionPresent.startSession|date('d-m-Y') }}</td>
+            <td>{{ sessionPresent.endSession|date('d-m-Y') }}</td>
             <td>
-                {% if session.formateur is defined %}
+                {% if sessionPresent.formateur is defined %}
                 {# {{ dump(session.formateur.id) }} #}
-                    <a href="{{ path('app_formateur', {'id' : session.formateur.id}) }}">{{ session.formateur }}</a>
+                    <a href="{{ path('app_formateur', {'id' : sessionPresent.formateur.id}) }}">{{ sessionPresent.formateur }}</a>
+                {% else %}
+                    N/A
+                {% endif %}
+            </td>
+            {# <td><a href="{{ path('app_session', {'id': session.id}) }}">xx</a></td> #}
+                    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+<h2>Liste de toutes les sessions passées programmées :</h2>
+
+<table>
+    <thead>
+    <tr>
+        <th>Session</th>
+        <th>Places</th>
+        <th>Inscrits</th>
+        <th>Date de début</th>
+        <th>Date de fin</th>
+        <th>Formateur</th>
+        {# <th>Delete</th> #}
+    </tr>
+    </thead>
+    <tbody>
+    {% for sessionPassees in sessionsPassees %}
+        <tr>
+            <td>
+                <a href="{{ path('app_showSession', {'id': sessionPassees.id}) }}">{{ sessionPassees }}</a>
+            </td>
+            <td>{{ sessionPassees.nbPlace }}</td>
+            <td>{{ sessionPassees.sessionUser|length }}/{{ sessionPassees.nbPlace }}</td>
+            <td>{{ sessionPassees.startSession|date('d-m-Y') }}</td>
+            <td>{{ sessionPassees.endSession|date('d-m-Y') }}</td>
+            <td>
+                {% if sessionPassees.formateur is defined %}
+                {# {{ dump(session.formateur.id) }} #}
+                    <a href="{{ path('app_formateur', {'id' : sessionPassees.formateur.id}) }}">{{ sessionPassees.formateur }}</a>
+                {% else %}
+                    N/A
+                {% endif %}
+            </td>
+            {# <td><a href="{{ path('app_session', {'id': session.id}) }}">xx</a></td> #}
+                    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+<h2>Liste de toutes les sessions futures programmées :</h2>
+
+<table>
+    <thead>
+    <tr>
+        <th>Session</th>
+        <th>Places</th>
+        <th>Inscrits</th>
+        <th>Date de début</th>
+        <th>Date de fin</th>
+        <th>Formateur</th>
+        {# <th>Delete</th> #}
+    </tr>
+    </thead>
+    <tbody>
+    {% for sessionFuture in sessionsFuture %}
+        <tr>
+            <td>
+                <a href="{{ path('app_showSession', {'id': sessionFuture.id}) }}">{{ sessionFuture }}</a>
+            </td>
+            <td>{{ sessionFuture.nbPlace }}</td>
+            <td>{{ sessionFuture.sessionUser|length }}/{{ sessionFuture.nbPlace }}</td>
+            <td>{{ sessionFuture.startSession|date('d-m-Y') }}</td>
+            <td>{{ sessionFuture.endSession|date('d-m-Y') }}</td>
+            <td>
+                {% if sessionFuture.formateur is defined %}
+                {# {{ dump(session.formateur.id) }} #}
+                    <a href="{{ path('app_formateur', {'id' : sessionFuture.formateur.id}) }}">{{ sessionFuture.formateur }}</a>
                 {% else %}
                     N/A
                 {% endif %}
