@@ -68,9 +68,14 @@ class UserController extends AbstractController
     #[Route('/user/{id}', name: 'app_showProfile')]
     public function showProfile(User $user): Response
     {
-        return $this->render('user/show.html.twig', [
-            'user' => $user
-        ]);
+        if($user){
+            return $this->render('user/show.html.twig', [
+                'user' => $user
+            ]);
+        } else {
+            return $this->redirectToRoute('app_showListUser');
+        }
     }
+
 
 }
