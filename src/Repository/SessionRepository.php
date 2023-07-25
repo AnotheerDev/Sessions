@@ -120,6 +120,48 @@ class SessionRepository extends ServiceEntityRepository
         return $query->getResult();
     }
     
+    public function sessionPassee()
+    {
+        $em = $this->getEntityManager();
+        $sub = $em->createQueryBuilder();
+
+        $qb = $sub;
+        $qb->select('s')
+            ->from('App\Entity\Session', 's')
+            ->where('s.endSession <?1')
+            ->setParameter('1', date('Y-m-d'));
+        $query = $qb->getQuery();
+        return $query->getResult();
+    }
+
+
+    public function sessionFuture()
+    {
+        $em = $this->getEntityManager();
+        $sub = $em->createQueryBuilder();
+
+        $qb = $sub;
+        $qb->select('s')
+            ->from('App\Entity\Session', 's')
+            ->where('s.startSession >?1')
+            ->setParameter('1', date('Y-m-d'));
+        $query = $qb->getQuery();
+        return $query->getResult();
+    }
     
 
+    public function sessionPresent()
+    {
+        $em = $this->getEntityManager();
+        $sub = $em->createQueryBuilder();
+
+        $qb = $sub;
+        $qb->select('s')
+            ->from('App\Entity\Session', 's')
+            ->where('s.startSession <?1')
+            ->andWhere('s.endSession >?1')
+            ->setParameter('1', date('Y-m-d'));
+        $query = $qb->getQuery();
+        return $query->getResult();
+    }
 }
