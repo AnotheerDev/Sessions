@@ -222,6 +222,9 @@ input {
 /* tout ce qui concerne les form */
 /* Style pour le conteneur du formulaire */
     .centre {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
         max-width: 400px;
         margin: 200px auto;
         padding: 20px;
@@ -294,6 +297,10 @@ input {
             flex-direction: column;
             position: fixed;
             top: -100%;
+            /* background-image: linear-gradient(to bottom, rgba(209, 107, 165, 0.7), rgba(199, 119, 185, 0.7), rgba(186, 131, 202, 0.7), rgba(170, 143, 216, 0.7), rgba(154, 154, 225, 0.7), rgba(138, 167, 236, 0.7), rgba(121, 179, 244, 0.7), rgba(105, 191, 248, 0.7), rgba(82, 207, 254, 0.7), rgba(65, 223, 255, 0.7), rgba(70, 238, 250, 0.7), rgba(95, 251, 241, 0.7)); */
+            background-color: rgba(128, 128, 128, 0.6); 
+            border-bottom: none;
+            border-radius: 5px;
         }
 
         .navLeft{
@@ -315,7 +322,7 @@ input {
             top: 15px;
         }
         #body-base{
-            padding-top: 200px; 
+            padding-top: 50px; 
         }
 
         .bloc-session1{
@@ -330,6 +337,21 @@ input {
             display: flex;
             flex-direction: column;
             gap: 115px;
+        }
+
+        .centre {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 300px;
+            margin-top: 200px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        #body-base{
+            min-width: 0;
         }
     }
 
