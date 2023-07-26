@@ -13,6 +13,10 @@
         text-decoration: none;
     }
 
+    a {
+        text-decoration: none;
+    }
+
 
 /* view : base.html.twig */
 
@@ -26,24 +30,35 @@
         background-image: linear-gradient(to left bottom, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1);
     }
 
+    h1 {
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    h2 {
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
 
 /* Css navBar */
 
-    #nav{
+    .nav__menu{
         display: flex;
         align-items: baseline;
         justify-content: space-between;
         border-bottom: rgb(255, 255, 255) solid 2px;
+        margin-bottom: 20px;
     }
 
-    #navLeft{
+    .navLeft{
         display: flex;
         flex-direction: row;
         justify-content: flex-start;
         gap : 20px;
     }
 
-    #navRight{
+    .navRight{
         display: flex;
         flex-direction: row;
         justify-content: flex-end;
@@ -266,3 +281,67 @@ input {
         flex-direction: row;
         gap: 230px;
     }
+
+    /* .btn-toggle{
+        position:fixed;
+        right: -200px;
+    }
+
+
+    @media screen and (max-width:1030px){
+        .nav__menu{
+            display: flex;
+            flex-direction: column;
+        }
+
+        .navLeft{
+            display: flex;
+            flex-direction: column;
+        }
+
+        .navRight{
+            display: flex;
+            flex-direction: column;
+        }
+        .btn-toggle{
+            display: flex;
+            position:fixed;
+            right: 25px;
+            top: 25px;
+        }
+    }
+
+    @media screen and (max-width:825px){
+        .nav__menu{
+            display: flex;
+            flex-direction: column;
+            position: fixed;
+            top: -200px;
+        }
+
+        .navLeft{
+            display: flex;
+            flex-direction: column;
+        }
+
+        .navRight{
+            display: flex;
+            flex-direction: column;
+            position: fixed;
+            top: -200px;
+        }
+
+        .btn-toggle{
+            display: flex;
+            position:fixed;
+            right: 25px;
+            top: 25px;
+        }
+        #body-base{
+            padding-top: 200px; 
+        }
+    }
+
+    .show-menu{
+        top: 0;
+    } */

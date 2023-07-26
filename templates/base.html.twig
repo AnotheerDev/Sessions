@@ -12,28 +12,34 @@
     <body id="body-base">
 
 
-
-
-
         {# NAV BAR  #}
-        <nav id="nav">
-            <ul id="navLeft">
-                    {% if app.user %}
-                        <lo><a href="{{ path('app_showListUser') }}">Liste des apprenants</a></lo>
-                        <lo><a href="{{ path('app_session') }}">Liste des sessions </a></lo>
-                        <lo><a href="{{ path('app_formation') }}">Liste des formations </a></lo>
-                    </ul>
-                <ul id="navRight">
-                        <lo><a href="{{ path('app_logout') }}">Se déconnecter</a></lo>
-                    {% else %}
-                        <lo><a href="{{ path('app_login') }}">Se connecter</a></lo>
-                        <lo><a href="{{ path('app_register') }}">S'enregistrer</a></lo>
-            {% endif %}
-    
-            {# {% if is_granted('ROLE_ADMIN') %}
-                <a href="">Panneau d'administration</a>
-            {% endif %} #}
+    {# <header class="header" id="header">
+        <nav class="nav container">
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list">
+                    <li class="nav__item">
+                        <a href="#" class="nav__link"></a>
+                    </li>
+                </ul>
+            </div>
+        </nav> #}
+        <nav class="nav__menu" id="nav-menu">
+            <ul class="navLeft">
+                {% if app.user %}
+                    <lo><a href="{{ path('app_showListUser') }}">Liste des apprenants</a></lo>
+                    <lo><a href="{{ path('app_session') }}">Liste des sessions </a></lo>
+                    <lo><a href="{{ path('app_formation') }}">Liste des formations </a></lo>
             </ul>
+            <ul class="navRight">
+                    <lo><a href="{{ path('app_logout') }}">Se déconnecter</a></lo>
+                {% else %}
+                    <lo><a href="{{ path('app_login') }}">Se connecter</a></lo>
+                    <lo><a href="{{ path('app_register') }}">S'enregistrer</a></lo>
+            {% endif %}
+            </ul>
+            <div class="btn-toggle" id="nav-toggle">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+            </div>
         </nav>
 
         {% block body %}{% endblock %}
@@ -43,5 +49,7 @@
     {% block javascripts %}
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js" integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="{{ asset ('js/script.js')}}"></script>
     {% endblock %}
 </html>
