@@ -12,29 +12,18 @@
     <body id="body-base">
 
 
-        {# NAV BAR  #}
-    {# <header class="header" id="header">
-        <nav class="nav container">
-            <div class="nav__menu" id="nav-menu">
-                <ul class="nav__list">
-                    <li class="nav__item">
-                        <a href="#" class="nav__link"></a>
-                    </li>
-                </ul>
-            </div>
-        </nav> #}
         <nav class="nav__menu" id="nav-menu">
             <ul class="navLeft">
                 {% if app.user %}
-                    <lo><a href="{{ path('app_showListUser') }}">Liste des apprenants</a></lo>
-                    <lo><a href="{{ path('app_session') }}">Liste des sessions </a></lo>
-                    <lo><a href="{{ path('app_formation') }}">Liste des formations </a></lo>
-            </ul>
+                    <lo><a href="{{ path('app_showListUser') }}" class="nav__link">Liste des apprenants</a></lo>
+                    <lo><a href="{{ path('app_session') }}" class="nav__link">Liste des sessions </a></lo>
+                    <lo><a href="{{ path('app_formation') }}" class="nav__link">Liste des formations </a></lo>
+                    <lo><a href="{{ path('app_logout') }}" class="nav__link">Se déconnecter</a></lo>
+                </ul>
             <ul class="navRight">
-                    <lo><a href="{{ path('app_logout') }}">Se déconnecter</a></lo>
                 {% else %}
-                    <lo><a href="{{ path('app_login') }}">Se connecter</a></lo>
-                    <lo><a href="{{ path('app_register') }}">S'enregistrer</a></lo>
+                    <lo><a href="{{ path('app_login') }}" class="nav__link">Se connecter</a></lo>
+                    <lo><a href="{{ path('app_register') }}" class="nav__link">S'enregistrer</a></lo>
             {% endif %}
             </ul>
             <div class="btn-toggle" id="nav-toggle">
