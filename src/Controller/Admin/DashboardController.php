@@ -33,6 +33,8 @@ class DashboardController extends AbstractDashboardController
             ->setTitle('Sessions');
     }
 
+
+    // ici on fait le menu de gauche dans easy admin pour accéder aux différentes entités
     public function configureMenuItems(): iterable
     {
         yield MenuItem::linkToCrud('Formateur', 'fas fa-list', Formateur::class);

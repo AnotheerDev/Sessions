@@ -17,7 +17,8 @@ class SessionCrudController extends AbstractCrudController
         return Session::class;
     }
 
-
+// ici j'ai modifé le code pour que les champs s'affichent dans l'ordre et avec les infos que je veux
+// Ne pas oublier d'importer les classes en haut du fichier
     public function configureFields(string $pageName): iterable
     {
         return [
