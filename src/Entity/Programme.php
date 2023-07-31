@@ -62,4 +62,9 @@ class Programme
 
         return $this;
     }
+
+    public function __toString(): string
+    {
+        return $this->getSession()->getSessionName();
+    }
 }
