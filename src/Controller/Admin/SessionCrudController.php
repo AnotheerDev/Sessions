@@ -22,7 +22,8 @@ class SessionCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
-            IdField::new('id'),
+            // ne pas afficher l'id car si je dois créer une session je veux que l'id soit généré automatiquement
+            // IdField::new('id'),
             TextField::new('SessionName'),
             DateTimeField::new('startSession'),
             DatetimeField::new('endSession'),
@@ -30,6 +31,7 @@ class SessionCrudController extends AbstractCrudController
             AssociationField::new('sessionFormation'),
             AssociationField::new('formateur'),
             AssociationField::new('sessionUser'),
+            // je dois avoir une liste déroulante pour les modules qui est dans l'entiry Programme
             AssociationField::new('sessionProgramme'),
         ];
     }
